@@ -71,7 +71,79 @@ namespace Smart_Delivery_Management_System_OOP_03
             //A sealed method cannot be overridden by any further derived class because the sealed keyword explicitly prevents further overriding.
             #endregion   //  // 
 
+            #region // Part 02 — Practical
 
+
+            DeliveryAddress address = new DeliveryAddress("El_Nozha" , "Str_27" , 5);
+            Driver Driver = new Driver();
+            Driver.DriverId = 1001;
+            Driver.FullName = "Antony Essac Zaki";
+            Driver.PhoneNumber = 01000112401;
+
+            DeliveryCenter center = new DeliveryCenter("Cairo Center");
+            center.Driver = Driver;
+
+            StandardShipment standard = new StandardShipment(
+                "ST001",
+                "Books",
+                10,
+                50,
+                address
+            );
+
+            ExpressShipment express = new ExpressShipment(
+                "EX001",
+                "Laptop",
+                5,
+                50,
+                address,
+                30
+            );
+
+            InternationalShipment international = new InternationalShipment(
+                "IN001",
+                "Phone",
+                3,
+                50,
+                address,
+                "USA",
+                40
+            );
+
+
+            center.AddShipment( standard );
+            center.AddShipment(express);
+            center.AddShipment(international);
+            center.PrintAllShipments();
+
+            DeliveryHelper.PrintShipmentDetails(standard);
+
+            DeliveryHelper.PrintShipmentDetails(express);
+
+            DeliveryHelper.PrintShipmentDetails(international);
+
+
+            standard.UpdateWeight(17);
+            express.UpdateWeight(25.5m ,125.7m );
+
+
+
+            Shipment[] Shipments =
+            {
+                standard,
+                express,
+                international
+            };
+            foreach(Shipment ship in Shipments)
+            {
+                ship.PrintShipment();
+            }
+            // CompletedShipment is sealed,
+            // so another class cannot inherit from it.
+
+            // GenerateCustomsReport() is sealed in PriorityInternationalShipment,
+            // so a further derived class cannot override it.
+            #endregion
 
 
 

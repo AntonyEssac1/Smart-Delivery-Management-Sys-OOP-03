@@ -88,20 +88,14 @@ namespace Smart_Delivery_Management_System_OOP_03
 
         public void PrintAllShipments()
         {
-
-            for (int i = 0; i < Shipments.Length; i++)
+            foreach (Shipment s in Shipments)
             {
-                if (Shipments[i] != null)
+                if (s != null)
                 {
-                    Console.WriteLine($"{i + 1} - Shipment : ");
-                    Shipments[i].PrintShipment();
+                    s.PrintShipment();
                 }
             }
-
         }
-
-
-
 
     }
 
