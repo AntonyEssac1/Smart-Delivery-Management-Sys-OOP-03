@@ -4,14 +4,19 @@ namespace Smart_Delivery_Management_System_OOP_03
 {
     internal class DeliveryCenter
     {
-        private Shipment[] Shipments = new Shipment[20];
-        public string CenterName { get; private set; }
+        private Shipment[] Shipments;
 
         public DeliveryCenter(string centerName)
         {
             CenterName = centerName;
             Shipments = new Shipment[20];
         }
+        public string CenterName { get; private set; }
+
+        public Driver Driver { get;  set; }
+
+
+      
         public Shipment this[int index]
         {
             get

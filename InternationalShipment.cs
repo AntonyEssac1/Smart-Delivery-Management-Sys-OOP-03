@@ -12,6 +12,33 @@ namespace Smart_Delivery_Management_System_OOP_03
         //CustomsFee must be greater than or equal to 0.
         //Override the EstimatedCost property to include the customs fee.
 
+
+
+
+
+        public override decimal EstimatedCost
+        {
+            get
+            {
+                return base.EstimatedCost + customsFee;
+            }
+        }
+
+
+        public InternationalShipment(
+            string trackingCode,
+            string description,
+            decimal weight,
+            decimal deliveryFee,
+            DeliveryAddress destination,
+            string destinationCountry,
+            decimal customsFee
+            )
+            : base(trackingCode, description, weight, deliveryFee, destination)
+        {
+            DestinationCountry = destinationCountry;
+            CustomsFee = customsFee;
+        }
         public string DestinationCountry
         {
             get { return destinationCountry; }
@@ -35,34 +62,19 @@ namespace Smart_Delivery_Management_System_OOP_03
         }
 
 
-        public override decimal EstimatedCost
+
+
+
+
+
+        public override void PrintShipment()
         {
-            get
-            {
-                return DeliveryFee + (Weight * 5) + customsFee;
-            }
+            base.PrintShipment();
+
+            Console.WriteLine($"DestinationCountry: {DestinationCountry}");
+            Console.WriteLine($"CustomsFee: {CustomsFee}");
+            Console.WriteLine("==================================");
         }
-
-
-        public InternationalShipment(
-            string trackingCode,
-            string description,
-            decimal weight,
-            decimal deliveryFee,
-            DeliveryAddress destination,
-            string destinationCountry,
-            decimal customsFee
-            )
-            : base(trackingCode, description, weight, deliveryFee, destination)
-        {
-            DestinationCountry = destinationCountry;
-            CustomsFee = customsFee;
-        }
-
-
-
-
-
 
 
 

@@ -88,7 +88,7 @@ namespace Smart_Delivery_Management_System_OOP_03
 
         }
 
-        public void PrintShipment()
+        public  virtual void PrintShipment()
         {
             Console.WriteLine($"trackingCode: {TrackingCode}");
             Console.WriteLine($"description: {Description}");
@@ -98,6 +98,18 @@ namespace Smart_Delivery_Management_System_OOP_03
             Console.WriteLine($"EstimatedCost: {EstimatedCost}");
             Console.WriteLine("==================================");
         }
+
+        public void UpdateWeight(decimal weight)
+        {
+            Weight = weight;
+        }
+
+        public void UpdateWeight(decimal weight , decimal extraPackingWeight)
+        {
+            Weight = weight + extraPackingWeight;
+        }
+
+
 
 
     }

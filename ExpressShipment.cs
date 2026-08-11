@@ -13,6 +13,24 @@ namespace Smart_Delivery_Management_System_OOP_03
 
         */
 
+      
+
+      
+
+
+        public ExpressShipment(
+         string trackingCode,
+         string description,
+         decimal weight,
+         decimal deliveryFee,
+         DeliveryAddress destination,
+         decimal extraFee)
+         : base(trackingCode, description, weight, deliveryFee, destination)
+        {
+            ExtraFee = extraFee;
+        }
+
+
         public decimal ExtraFee
         {
             get { return extraFee; }
@@ -28,22 +46,23 @@ namespace Smart_Delivery_Management_System_OOP_03
         {
             get
             {
-                return DeliveryFee + (Weight * 5) + ExtraFee;
+                return base.EstimatedCost + ExtraFee;
             }
         }
 
 
-        public ExpressShipment(
-         string trackingCode,
-         string description,
-         decimal weight,
-         decimal deliveryFee,
-         DeliveryAddress destination,
-         decimal extraFee)
-         : base(trackingCode, description, weight, deliveryFee, destination)
+
+        public override void PrintShipment()
         {
-            ExtraFee = extraFee;
+            base.PrintShipment();
+
+            Console.WriteLine($"ExtraFee: {ExtraFee}");
+            Console.WriteLine("==================================");
         }
 
+
+
     }
-}
+
+    }
+
